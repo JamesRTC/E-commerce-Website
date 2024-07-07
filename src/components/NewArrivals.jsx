@@ -1,83 +1,7 @@
-// import { useState, useRef } from "react";
-// import { products } from "../API/productsAPI";
-// import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
-// export const NewArrivals = () => {
-//   const [scrollPosition, setScrollPosition] = useState(0);
-//   const containerRef = useRef(null);
-
-//   const scrollLeft = () => {
-//     if (containerRef.current) {
-//       const newPosition = containerRef.current.scrollLeft - 200; // Adjust scroll amount as needed
-//       containerRef.current.scrollTo({
-//         left: newPosition,
-//         behavior: "smooth",
-//       });
-//       setScrollPosition(newPosition);
-//     }
-//   };
-
-//   const scrollRight = () => {
-//     if (containerRef.current) {
-//       const newPosition = containerRef.current.scrollLeft + 200; // Adjust scroll amount as needed
-//       containerRef.current.scrollTo({
-//         left: newPosition,
-//         behavior: "smooth",
-//       });
-//       setScrollPosition(newPosition);
-//     }
-//   };
-
-//   return (
-//     <section className="p-10">
-//       <h1 className="text-2xl font-bold uppercase">New Arrivals</h1>
-//       <h2 className="text-xl font-semibold uppercase">Shop all</h2>
-//       <div className="relative overflow-hidden">
-//         <div
-//           ref={containerRef}
-//           className="no-scrollbar grid grid-flow-col gap-5 overflow-x-scroll"
-//           style={{ scrollBehavior: "smooth" }}
-//         >
-//           {products.newArrivals.map((product) => (
-//             <div
-//               key={product.id}
-//               className="flex h-[450px] min-w-[360px] flex-col"
-//             >
-//               <div className="relative flex-grow pb-[110%]">
-//                 <img
-//                   src={product.mainImage}
-//                   alt={product.name}
-//                   className="absolute inset-0 h-full w-full object-cover object-center"
-//                 />
-//               </div>
-//               <div className="my-2">
-//                 <div className="font-bold">{product.name}</div>
-//                 <div className="text-gray-600">{product.price}</div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//         <button
-//           className="absolute left-0 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
-//           onClick={scrollLeft}
-//         >
-//           <FaChevronLeft className="text-xl text-gray-600" />
-//         </button>
-//         <button
-//           className="absolute right-0 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
-//           onClick={scrollRight}
-//         >
-//           <FaChevronRight className="text-xl text-gray-600" />
-//         </button>
-//       </div>
-//       <div className="mt-4 text-center">Scroll Position: {scrollPosition}</div>
-//     </section>
-//   );
-// };
-
 import { useState, useRef, useEffect } from "react";
 import { products } from "../API/productsAPI";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const NewArrivals = () => {
   const containerRef = useRef(null);
@@ -85,6 +9,7 @@ export const NewArrivals = () => {
   const [showRightArrow, setShowRightArrow] = useState(true);
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [hoveredImageUrl, setHoveredImageUrl] = useState(null);
+  const category = "newArrivals";
 
   const updateArrowsVisibility = () => {
     if (containerRef.current) {
@@ -140,28 +65,31 @@ export const NewArrivals = () => {
           className="no-scrollbar grid grid-flow-col gap-5 overflow-x-scroll"
           style={{ scrollBehavior: "smooth" }}
         >
-          {products.newArrivals.slice(0, 8).map((product) => (
+          {products[category].slice(0, 8).map((product) => (
             <div key={product.id} className="min-w-[360px]">
-              <div
-                className="relative pb-[110%]"
-                onMouseEnter={() => handleMouseEnter(product.id)}
-                onMouseLeave={handleMouseLeave}
+              <Link
+                to={`/viewProduct/${category}/${product.name}/${product.id}`}
               >
-                <img
-                  src={
-                    hoveredProductId === product.id && hoveredImageUrl
-                      ? hoveredImageUrl
-                      : product.mainImage
-                  }
-                  alt={product.name}
-                  className="absolute inset-0 h-full w-full object-cover object-center"
-                />
-              </div>
-              <div className="my-2">
-                <div className="font-bold">{product.name}</div>
-                <div className="font-semibold text-gray-600">
-                  ${product.price}
+                <div
+                  className="relative pb-[110%]"
+                  onMouseEnter={() => handleMouseEnter(product.id)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <img
+                    src={
+                      hoveredProductId === product.id && hoveredImageUrl
+                        ? hoveredImageUrl
+                        : product.mainImage
+                    }
+                    alt={product.name}
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                  />
                 </div>
+
+                <div className="mt-2 font-bold">{product.name}</div>
+              </Link>
+              <div className="mt-1 font-semibold text-gray-600">
+                ${product.price}
               </div>
             </div>
           ))}

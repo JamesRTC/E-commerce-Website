@@ -85,7 +85,7 @@ const products = {
     },
     {
       id: 4,
-      name: `Air Jordan 6 Retro "White/Black"`,
+      name: `Air Jordan 6 Retro "White & Black"`,
       mainImage: AirJordanRetro6,
       subImages: [AirJordanRetro61, AirJordanRetro62, AirJordanRetro63],
       sizes: [8, 9, 10, 11, 12],
@@ -97,7 +97,7 @@ const products = {
     },
     {
       id: 5,
-      name: `Air Jordan 6 Retro "White/BlackAir Jordan 1 Mid`,
+      name: `Air Jordan 1 Mid`,
       mainImage: AirJordanMid,
       subImages: [AirJordanMid1, AirJordanMid2, AirJordanMid3],
       sizes: [8, 9, 10, 11, 12],
