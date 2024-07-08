@@ -4,7 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 
 export const Nav = () => {
   return (
-    <section className="px-10">
+    <section className="border-b-[1px] px-10 pb-5">
       <nav>
         <ul className="flex items-center justify-end gap-5 py-10">
           <li>

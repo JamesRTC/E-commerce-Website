@@ -1,64 +1,211 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { products } from "../API/productsAPI";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export const ViewProduct = () => {
   const { category, name, id } = useParams();
-
-  const [imageOnDislay, setImageOnDisplay] = useState(null);
+  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+  const [media, setMedia] = useState([]);
+  const [videoPlaybackTime, setVideoPlaybackTime] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    setImageOnDisplay(allImages[0]);
-  }, []);
+    const item = products[category]?.find(
+      (product) => product.id === Number(id),
+    );
+    if (item) {
+      setMedia([
+        { type: "image", src: item.mainImage },
+        ...item.subImages.map((src) => ({ type: "image", src })),
+        ...item.subVideos.map((src) => ({ type: "video", src })),
+      ]);
+      setCurrentMediaIndex(0);
+    }
+  }, [category, id]);
 
-  const item = products[category].find((product) => product.id === Number(id));
+  useEffect(() => {
+    if (
+      media.length &&
+      media[currentMediaIndex].type === "video" &&
+      videoRef.current
+    ) {
+      videoRef.current.currentTime = videoPlaybackTime;
+      videoRef.current.play();
+    }
+  }, [currentMediaIndex, media, videoPlaybackTime]);
 
-  const allImages = [item.mainImage, ...item.subImages];
+  const handlePrevious = () => {
+    if (media[currentMediaIndex].type === "video" && videoRef.current) {
+      setVideoPlaybackTime(videoRef.current.currentTime);
+    }
+    setCurrentMediaIndex((prevIndex) =>
+      prevIndex > 0 ? prevIndex - 1 : media.length - 1,
+    );
+  };
 
-  console.log(allImages);
+  const handleNext = () => {
+    if (media[currentMediaIndex].type === "video" && videoRef.current) {
+      setVideoPlaybackTime(videoRef.current.currentTime);
+    }
+    setCurrentMediaIndex((prevIndex) =>
+      prevIndex < media.length - 1 ? prevIndex + 1 : 0,
+    );
+  };
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const handleVideoEnd = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play();
+    }
+  };
+
+  if (!media.length) {
+    return <p>Product not found</p>;
+  }
+
+  const currentMedia = media[currentMediaIndex];
+  const item = products[category]?.find((product) => product.id === Number(id));
   return (
-    <section className="p-10">
-      {item ? (
-        <div className="flex">
-          <div className="flex w-3/5 items-start gap-5">
-            <div className="">
-              {allImages.map((image, index) => (
-                <>
-                  <div className="flex flex-col">
-                    <div
-                      key={index}
-                      className="relative mb-10 h-[100px] w-[100px]"
-                    >
-                      <img
-                        src={image}
-                        alt="product image"
-                        className="absolute inset-0 object-cover object-center"
-                      />
-                    </div>
-                  </div>
-                </>
-              ))}
-            </div>
-            <div className="relative">
-              <img src={imageOnDislay} alt="" />
-
-              <button className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-gray-200 p-2 hover:bg-gray-300">
-                <FaChevronLeft className="text-xl text-gray-600" />
-              </button>
-
-              <button className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-gray-200 p-2 hover:bg-gray-300">
-                <FaChevronRight className="text-xl text-gray-600" />
-              </button>
-            </div>
+    <section className="px-10">
+      <div className="py-5 text-xs">
+        <Link to={`/${item.category}`}>
+          <span className="px-1 uppercase text-gray-400">{item.category} </span>
+          /
+        </Link>
+        <Link to={`/${item.type}/${item.category}`}>
+          <span className="px-1 uppercase text-gray-400">{item.type} </span>/
+        </Link>
+        <span className="px-1 uppercase">{name}</span>
+      </div>
+      <div className="flex gap-5">
+        <div className="flex w-3/5 items-start gap-5">
+          <div>
+            {media.map((mediaItem, index) => (
+              <div
+                key={index}
+                className={`relative mb-2 h-[100px] w-[100px] cursor-pointer ${
+                  index === currentMediaIndex ? "border border-black" : ""
+                }`}
+                onClick={() => setCurrentMediaIndex(index)}
+              >
+                {mediaItem.type === "image" ? (
+                  <img
+                    src={mediaItem.src}
+                    alt="product media"
+                    className="h-full w-full object-cover object-center"
+                  />
+                ) : (
+                  <video
+                    src={mediaItem.src}
+                    className="h-full w-full object-cover"
+                    muted
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+              </div>
+            ))}
           </div>
 
-          <div className="w-2/5">product description</div>
+          <div
+            className="relative h-full w-full"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {currentMedia.type === "image" ? (
+              <img
+                src={currentMedia.src}
+                alt="current product media"
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <video
+                ref={videoRef}
+                src={currentMedia.src}
+                controls
+                className="h-full w-full object-cover"
+                onEnded={handleVideoEnd}
+              >
+                Your browser does not support the video tag.
+              </video>
+            )}
+
+            {isHovered && (
+              <>
+                <button
+                  onClick={handlePrevious}
+                  className="absolute left-5 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
+                >
+                  <FaChevronLeft className="text-xl text-gray-600" />
+                </button>
+
+                <button
+                  onClick={handleNext}
+                  className="absolute right-5 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
+                >
+                  <FaChevronRight className="text-xl text-gray-600" />
+                </button>
+              </>
+            )}
+          </div>
         </div>
-      ) : (
-        <p>Product not found</p>
-      )}
+        <div className="w-2/5">
+          <div className="mb-1 font-bold"> {item.name} </div>
+          <div className="mb-5 font-semibold"> ${item.price} </div>
+          <div className="mb-1 flex text-xs uppercase text-gray-400">
+            {" "}
+            size:{" "}
+          </div>
+          <div className="mb-5 flex gap-2">
+            {item.sizes?.map((size, index) => (
+              <div key={index} className="border border-black px-6 py-2">
+                {size}
+              </div>
+            ))}
+          </div>
+
+          <div className="mb-1 text-xs uppercase">Quantity</div>
+          <div className="mb-5 w-[100px]">
+            <select
+              name="quantity"
+              id="quantity"
+              className="w-full border border-gray-400 p-2 focus:outline-none"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+
+          <button className="mb-10 w-full bg-black py-3 font-bold uppercase text-white">
+            Add to bag
+          </button>
+
+          {item.description && (
+            <>
+              <div className="mb-1 font-semibold uppercase">details</div>
+              <div>{item.description}</div>
+            </>
+          )}
+        </div>
+      </div>
     </section>
   );
 };
