@@ -9,8 +9,10 @@ export const ViewProduct = () => {
   const [media, setMedia] = useState([]);
   const [videoPlaybackTime, setVideoPlaybackTime] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   const videoRef = useRef(null);
 
+  console.log(quantity);
   useEffect(() => {
     const item = products[category]?.find(
       (product) => product.id === Number(id),
@@ -83,11 +85,11 @@ export const ViewProduct = () => {
           /
         </Link>
         <Link to={`/${item.type}/${item.category}`}>
-          <span className="px-1 uppercase text-gray-400">{item.type} </span>/
+          <span className="px-1 uppercase text-gray-400">{item.type} </span> /
         </Link>
         <span className="px-1 uppercase">{name}</span>
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-10">
         <div className="flex w-3/5 items-start gap-5">
           <div>
             {media.map((mediaItem, index) => (
@@ -144,16 +146,16 @@ export const ViewProduct = () => {
               <>
                 <button
                   onClick={handlePrevious}
-                  className="absolute left-5 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
+                  className="absolute left-5 top-1/2 -translate-y-1/2 transform rounded-full p-2"
                 >
-                  <FaChevronLeft className="text-xl text-gray-600" />
+                  <FaChevronLeft className="text-xl" />
                 </button>
 
                 <button
                   onClick={handleNext}
-                  className="absolute right-5 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
+                  className="absolute right-5 top-1/2 -translate-y-1/2 transform rounded-full p-2"
                 >
-                  <FaChevronRight className="text-xl text-gray-600" />
+                  <FaChevronRight className="text-xl" />
                 </button>
               </>
             )}
@@ -180,6 +182,8 @@ export const ViewProduct = () => {
               name="quantity"
               id="quantity"
               className="w-full border border-gray-400 p-2 focus:outline-none"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
             >
               <option value="1">1</option>
               <option value="2">2</option>

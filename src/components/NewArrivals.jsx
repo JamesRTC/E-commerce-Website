@@ -2,13 +2,13 @@ import { useState, useRef, useEffect } from "react";
 import { products } from "../API/productsAPI";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ProductCard } from "./ProductCard";
 
 export const NewArrivals = () => {
   const containerRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
-  const [hoveredProductId, setHoveredProductId] = useState(null);
-  const [hoveredImageUrl, setHoveredImageUrl] = useState(null);
+
   const category = "newArrivals";
 
   const updateArrowsVisibility = () => {
@@ -41,23 +41,12 @@ export const NewArrivals = () => {
     }
   };
 
-  const handleMouseEnter = (productId) => {
-    const product = products.newArrivals.find((p) => p.id === productId);
-    if (product && product.subImages.length > 0) {
-      setHoveredProductId(productId);
-      setHoveredImageUrl(product.subImages[0]); // Use the first subimage as the hovered image
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredProductId(null);
-    setHoveredImageUrl(null);
-  };
-
   return (
     <section className="p-10">
       <h1 className="text-2xl font-bold uppercase">New Arrivals</h1>
-      <h2 className="text-xl font-semibold uppercase">Shop all</h2>
+      <Link to="/newArrivals">
+        <h2 className="text-md font-semibold uppercase">Shop all</h2>
+      </Link>
       <div className="relative">
         <div
           ref={containerRef}
@@ -66,32 +55,11 @@ export const NewArrivals = () => {
           style={{ scrollBehavior: "smooth" }}
         >
           {products[category].slice(0, 8).map((product) => (
-            <div key={product.id} className="min-w-[360px]">
-              <Link
-                to={`/viewProduct/${category}/${product.name}/${product.id}`}
-              >
-                <div
-                  className="relative pb-[110%]"
-                  onMouseEnter={() => handleMouseEnter(product.id)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <img
-                    src={
-                      hoveredProductId === product.id && hoveredImageUrl
-                        ? hoveredImageUrl
-                        : product.mainImage
-                    }
-                    alt={product.name}
-                    className="absolute inset-0 h-full w-full object-cover object-center"
-                  />
-                </div>
-
-                <div className="mt-2 font-bold">{product.name}</div>
-              </Link>
-              <div className="mt-1 font-semibold text-gray-600">
-                ${product.price}
-              </div>
-            </div>
+            <ProductCard
+              key={product.id}
+              product={product}
+              category={category}
+            />
           ))}
         </div>
         {showLeftArrow && (

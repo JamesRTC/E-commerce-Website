@@ -8,6 +8,7 @@ import { WomenShoes } from "../Pages/WomenShoes";
 import { MenShoes } from "../Pages/MenShoes";
 import { WomenDresses } from "../Pages/WomenDresses";
 import { MenClothes } from "../Pages/MenClothes";
+import { NewFashion } from "../Pages/NewFashion";
 
 export const AppRouter = () => {
   return (
@@ -19,6 +20,7 @@ export const AppRouter = () => {
             path="viewProduct/:category/:name/:id"
             element={<ViewProduct />}
           />
+          <Route path="newArrivals" element={<NewFashion />} />
           <Route path="women" element={<Women />} />
           <Route path="men" element={<Men />} />
           <Route path="shoes/:men" element={<MenShoes />} />

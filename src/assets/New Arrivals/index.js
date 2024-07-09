@@ -23,7 +23,7 @@ import CurlyJacket1 from "./CURLY SHEARLING JACKET 2.jfif";
 import CurlyJacketVid from "./CURLY SHEARLING JACKET.mp4";
 import GRAINLEATHER from "./GRAIN LEATHER TARA MEDIUM CROSSBODY.jfif";
 import GRAINLEATHER1 from "./GRAIN LEATHER TARA MEDIUM CROSSBODY 2.jfif";
-import GRAINLEATHERVid from "./CURLY SHEARLING JACKET.mp4";
+import GRAINLEATHERVid from "./GRAIN LEATHER TARA MEDIUM CROSSBODY.mp4";
 import JordanSpizike from "./Jordan Spizike Low.png";
 import JordanSpizike1 from "./Jordan Spizike Low 2.png";
 import JordanSpizike2 from "./Jordan Spizike Low 3.png";
