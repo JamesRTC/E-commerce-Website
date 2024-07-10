@@ -9,6 +9,7 @@ import { MenShoes } from "../Pages/MenShoes";
 import { WomenDresses } from "../Pages/WomenDresses";
 import { MenClothes } from "../Pages/MenClothes";
 import { NewFashion } from "../Pages/NewFashion";
+import { MenSuites } from "../Pages/MenSuites";
 
 export const AppRouter = () => {
   return (
@@ -23,6 +24,7 @@ export const AppRouter = () => {
           <Route path="newArrivals" element={<NewFashion />} />
           <Route path="women" element={<Women />} />
           <Route path="men" element={<Men />} />
+          <Route path="suits/:men" element={<MenSuites />} />
           <Route path="shoes/:men" element={<MenShoes />} />
           <Route path="shoes/:women" element={<WomenShoes />} />
           <Route path="dresses/:women" element={<WomenDresses />} />
