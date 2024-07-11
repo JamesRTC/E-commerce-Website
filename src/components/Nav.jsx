@@ -21,8 +21,11 @@ export const Nav = () => {
           <ul className="cursor-pointer">
             <GoPerson className="size-5 cursor-pointer transition-all duration-300 hover:text-slate-500" />
           </ul>
-          <li className="cursor-pointer">
+          <li className="relative cursor-pointer">
             <HiOutlineShoppingBag className="size-5 cursor-pointer transition-all duration-300 hover:text-slate-500" />
+            <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black p-1 text-[10px] text-white">
+              1
+            </span>
           </li>
         </ul>
       </nav>

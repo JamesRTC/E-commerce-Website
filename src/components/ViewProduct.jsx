@@ -10,6 +10,7 @@ export const ViewProduct = () => {
   const [videoPlaybackTime, setVideoPlaybackTime] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [itemSize, setItemSize] = useState();
   const videoRef = useRef(null);
 
   console.log(quantity);
@@ -163,17 +164,31 @@ export const ViewProduct = () => {
         </div>
         <div className="w-2/5">
           <div className="mb-1 font-bold"> {item.name} </div>
+
           <div className="mb-5 font-semibold"> ${item.price} </div>
-          <div className="mb-1 flex text-xs uppercase text-gray-400">
-            {" "}
-            size:{" "}
+
+          <div className="mb-1 text-xs uppercase text-gray-400">
+            size: <span className="px-1 text-black">{itemSize}</span>
           </div>
+
           <div className="mb-5 flex gap-2">
             {item.sizes?.map((size, index) => (
-              <div key={index} className="border border-black px-6 py-2">
+              <div
+                key={index}
+                onClick={() => setItemSize(size)}
+                className={`cursor-pointer border ${
+                  itemSize === size ? "border-black" : "border-gray-300"
+                } px-6 py-2 hover:border-black`}
+              >
                 {size}
               </div>
             ))}
+          </div>
+
+          <div className="mb-5">
+            {" "}
+            <span className="text-xs uppercase text-gray-400">Color:</span>{" "}
+            <span className="text-sm">As in picture</span>{" "}
           </div>
 
           <div className="mb-1 text-xs uppercase">Quantity</div>
@@ -198,7 +213,13 @@ export const ViewProduct = () => {
             </select>
           </div>
 
-          <button className="mb-10 w-full bg-black py-3 font-bold uppercase text-white">
+          <button
+            className={`mb-10 w-full ${
+              itemSize
+                ? "cursor-pointer bg-black text-white hover:bg-black/50"
+                : "cursor-not-allowed bg-stone-300 text-black/30"
+            } py-3 font-bold uppercase`}
+          >
             Add to bag
           </button>
 

@@ -9,8 +9,8 @@ export const WomenDresses = () => {
       <div className="pt-5 text-xs uppercase">
         <Link to={`/${category}`}>
           <span className="pr-2 text-gray-400">{`${category}`}</span>/
-          <span className="pl-2">dresses</span>
         </Link>
+        <span className="pl-2">dresses</span>
       </div>
       <h1 className="py-5 text-2xl font-semibold uppercase">Dresses</h1>
       <div className="grid grid-cols-3 gap-5">
