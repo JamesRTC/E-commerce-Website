@@ -2,6 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import { products } from "../API/productsAPI";
 import { useEffect, useState, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addItem } from "../Redux/cartSlice";
 
 export const ViewProduct = () => {
   const { category, name, id } = useParams();
@@ -13,7 +15,8 @@ export const ViewProduct = () => {
   const [itemSize, setItemSize] = useState();
   const videoRef = useRef(null);
 
-  console.log(quantity);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const item = products[category]?.find(
       (product) => product.id === Number(id),
@@ -78,6 +81,19 @@ export const ViewProduct = () => {
 
   const currentMedia = media[currentMediaIndex];
   const item = products[category]?.find((product) => product.id === Number(id));
+
+  function handleAddToCart() {
+    const newItem = {
+      productId: item.id,
+      name: item.name,
+      size: itemSize,
+      quantity: quantity,
+      unitPrice: item.price,
+      totalPrice: item.price * quantity,
+    };
+
+    dispatch(addItem(newItem));
+  }
   return (
     <section className="px-10">
       <div className="py-5 text-xs">
@@ -167,10 +183,17 @@ export const ViewProduct = () => {
 
           <div className="mb-5 font-semibold"> ${item.price} </div>
 
-          <div className="mb-1 text-xs uppercase text-gray-400">
-            size: <span className="px-1 text-black">{itemSize}</span>
-          </div>
+          {item.stock && (
+            <div className="mb-5 text-xs uppercase text-gray-400">
+              stock: <span className="px-1 text-black">{item.stock}</span>
+            </div>
+          )}
 
+          {item.sizes.length > 0 && (
+            <div className="mb-1 text-xs uppercase text-gray-400">
+              size: <span className="px-1 text-black">{itemSize}</span>
+            </div>
+          )}
           <div className="mb-5 flex gap-2">
             {item.sizes?.map((size, index) => (
               <div
@@ -186,9 +209,8 @@ export const ViewProduct = () => {
           </div>
 
           <div className="mb-5">
-            {" "}
-            <span className="text-xs uppercase text-gray-400">Color:</span>{" "}
-            <span className="text-sm">As in picture</span>{" "}
+            <span className="pr-1 text-xs uppercase text-gray-400">Color:</span>
+            <span className="text-xs uppercase">As in picture</span>
           </div>
 
           <div className="mb-1 text-xs uppercase">Quantity</div>
@@ -198,7 +220,7 @@ export const ViewProduct = () => {
               id="quantity"
               className="w-full border border-gray-400 p-2 focus:outline-none"
               value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={(e) => setQuantity(Number(e.target.value))}
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -213,15 +235,21 @@ export const ViewProduct = () => {
             </select>
           </div>
 
-          <button
-            className={`mb-10 w-full ${
-              itemSize
-                ? "cursor-pointer bg-black text-white hover:bg-black/50"
-                : "cursor-not-allowed bg-stone-300 text-black/30"
-            } py-3 font-bold uppercase`}
-          >
-            Add to bag
-          </button>
+          {item.sizes.length > 0 ? (
+            <button
+              onClick={handleAddToCart}
+              className={`mb-10 w-full ${itemSize && item.stock > 0 ? "cursor-pointer bg-black text-white" : "cursor-not-allowed bg-stone-300 text-black/30"} py-3 font-bold uppercase`}
+            >
+              Add to bag
+            </button>
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="mb-10 w-full bg-black py-3 font-bold uppercase text-white"
+            >
+              Add to bag
+            </button>
+          )}
 
           {item.description && (
             <>

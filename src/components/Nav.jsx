@@ -1,8 +1,11 @@
 import { GoPerson } from "react-icons/go";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { getTotalCartQuantity } from "../Redux/cartSlice";
 
 export const Nav = () => {
+  const totalCartQuantity = useSelector(getTotalCartQuantity);
   return (
     <section className="border-b-[1px] px-10 pb-5">
       <nav>
@@ -23,9 +26,11 @@ export const Nav = () => {
           </ul>
           <li className="relative cursor-pointer">
             <HiOutlineShoppingBag className="size-5 cursor-pointer transition-all duration-300 hover:text-slate-500" />
-            <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black p-1 text-[10px] text-white">
-              1
-            </span>
+            {totalCartQuantity > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black p-1 text-[10px] text-white">
+                {totalCartQuantity}
+              </span>
+            )}
           </li>
         </ul>
       </nav>
