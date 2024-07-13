@@ -44,10 +44,15 @@ export const NewArrivals = () => {
   return (
     <section className="p-10">
       <h1 className="text-2xl font-bold uppercase">New Arrivals</h1>
-      <Link to="/newArrivals">
-        <h2 className="text-md font-semibold uppercase">Shop all</h2>
+      <Link
+        to="/newArrivals"
+        className="text-md mb-2 font-semibold uppercase hover:underline"
+      >
+        {/* <h2 className=""> */}
+        Shop all
+        {/* </h2> */}
       </Link>
-      <div className="relative">
+      <div className="relative mt-2">
         <div
           ref={containerRef}
           onScroll={updateArrowsVisibility}

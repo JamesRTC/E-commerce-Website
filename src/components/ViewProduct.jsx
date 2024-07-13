@@ -13,6 +13,7 @@ export const ViewProduct = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [itemSize, setItemSize] = useState();
+  const [showSizeError, setShowSizeError] = useState(false);
   const videoRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -82,10 +83,16 @@ export const ViewProduct = () => {
   const currentMedia = media[currentMediaIndex];
   const item = products[category]?.find((product) => product.id === Number(id));
 
-  function handleAddToCart() {
+  const handleAddToCart = () => {
+    if (item.sizes.length > 0 && !itemSize) {
+      setShowSizeError(true);
+      return;
+    }
+
     const newItem = {
       productId: item.id,
       name: item.name,
+      category: item.category,
       size: itemSize,
       quantity: quantity,
       unitPrice: item.price,
@@ -93,16 +100,23 @@ export const ViewProduct = () => {
     };
 
     dispatch(addItem(newItem));
-  }
+    setShowSizeError(false);
+  };
+
+  const handleSelectSize = (size) => {
+    setItemSize(size);
+    setShowSizeError(false);
+  };
+
   return (
     <section className="px-10">
       <div className="py-5 text-xs">
         <Link to={`/${item.category}`}>
-          <span className="px-1 uppercase text-gray-400">{item.category} </span>
+          <span className="px-1 uppercase text-gray-400">{item.category}</span>{" "}
           /
         </Link>
         <Link to={`/${item.type}/${item.category}`}>
-          <span className="px-1 uppercase text-gray-400">{item.type} </span> /
+          <span className="px-1 uppercase text-gray-400">{item.type}</span> /
         </Link>
         <span className="px-1 uppercase">{name}</span>
       </div>
@@ -179,9 +193,9 @@ export const ViewProduct = () => {
           </div>
         </div>
         <div className="w-2/5">
-          <div className="mb-1 font-bold"> {item.name} </div>
+          <div className="mb-1 font-bold">{item.name}</div>
 
-          <div className="mb-5 font-semibold"> ${item.price} </div>
+          <div className="mb-5 font-semibold">${item.price}</div>
 
           {item.stock && (
             <div className="mb-5 text-xs uppercase text-gray-400">
@@ -194,11 +208,16 @@ export const ViewProduct = () => {
               size: <span className="px-1 text-black">{itemSize}</span>
             </div>
           )}
+          {showSizeError && (
+            <div className="text-xs font-semibold text-red-600">
+              Please select a size
+            </div>
+          )}
           <div className="mb-5 flex gap-2">
             {item.sizes?.map((size, index) => (
               <div
                 key={index}
-                onClick={() => setItemSize(size)}
+                onClick={() => handleSelectSize(size)}
                 className={`cursor-pointer border ${
                   itemSize === size ? "border-black" : "border-gray-300"
                 } px-6 py-2 hover:border-black`}
@@ -235,21 +254,16 @@ export const ViewProduct = () => {
             </select>
           </div>
 
-          {item.sizes.length > 0 ? (
-            <button
-              onClick={handleAddToCart}
-              className={`mb-10 w-full ${itemSize && item.stock > 0 ? "cursor-pointer bg-black text-white" : "cursor-not-allowed bg-stone-300 text-black/30"} py-3 font-bold uppercase`}
-            >
-              Add to bag
-            </button>
-          ) : (
-            <button
-              onClick={handleAddToCart}
-              className="mb-10 w-full bg-black py-3 font-bold uppercase text-white"
-            >
-              Add to bag
-            </button>
-          )}
+          <button
+            onClick={handleAddToCart}
+            className={`mb-10 w-full ${
+              item.sizes.length > 0 && !itemSize
+                ? "bg-stone-300 text-black/30"
+                : "cursor-pointer bg-black text-white"
+            } py-3 font-bold uppercase transition-all duration-300 hover:bg-black/50`}
+          >
+            Add to bag
+          </button>
 
           {item.description && (
             <>
