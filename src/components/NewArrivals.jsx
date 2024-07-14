@@ -46,7 +46,7 @@ export const NewArrivals = () => {
       <h1 className="text-2xl font-bold uppercase">New Arrivals</h1>
       <Link
         to="/newArrivals"
-        className="text-md mb-2 font-semibold uppercase hover:underline"
+        className="text-md mb-2 font-semibold uppercase hover:underline hover:underline-offset-4"
       >
         {/* <h2 className=""> */}
         Shop all

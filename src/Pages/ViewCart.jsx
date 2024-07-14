@@ -4,6 +4,10 @@ import { LuMinusCircle } from "react-icons/lu";
 import { LuPlusCircle } from "react-icons/lu";
 import { IoMdClose } from "react-icons/io";
 import { paypalLogo } from "../assets/logos";
+import { EmptyCart } from "./EmptyCart";
+import { useState } from "react";
+import { Overlay } from "../components/Overlay";
+import { Modal } from "../components/Modal";
 import {
   decreaseItemQuantity,
   deleteItem,
@@ -11,14 +15,18 @@ import {
   getTotalCartPrice,
   increaseItemQuantity,
 } from "../Redux/cartSlice";
-import { EmptyCart } from "./EmptyCart";
 
 export const ViewCart = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector(getCart);
   const totalAmount = useSelector(getTotalCartPrice);
 
   if (cart.length === 0) return <EmptyCart />;
+
+  const handleClose = () => {
+    setModalIsOpen(false);
+  };
 
   return (
     <section className="flex justify-center gap-10">
@@ -27,6 +35,7 @@ export const ViewCart = () => {
           const product = products[item.category].find(
             (product) => item.productId === product.id,
           );
+
           return (
             <div key={`${item.productId}-${item.size}`}>
               <div className="mb-5 grid grid-cols-[300px,1fr] gap-10 border-b-[1px] pb-5 text-sm">
@@ -46,7 +55,22 @@ export const ViewCart = () => {
                       size: <span className="font-semibold">{item.size}</span>
                     </div>
                     <div className="font-semibold uppercase">In stock</div>
-                    <div className="mt-5 font-semibold uppercase">Edit</div>
+                    <div
+                      className="mt-5 text-sm font-semibold uppercase underline-offset-2 hover:cursor-pointer hover:underline"
+                      onClick={() => setModalIsOpen(item)}
+                    >
+                      Edit
+                    </div>
+
+                    {modalIsOpen === item && product && (
+                      <Overlay onClose={handleClose} product={product}>
+                        <Modal
+                          item={item}
+                          product={product}
+                          onClose={handleClose}
+                        />
+                      </Overlay>
+                    )}
                   </div>
                 </div>
 
