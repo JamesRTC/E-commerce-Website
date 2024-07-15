@@ -173,7 +173,7 @@ export const Modal = ({ item, product, onClose }) => {
               Please select a size
             </div>
           )}
-          <div className="mb-5 flex gap-2">
+          <div className="mb-5 flex flex-wrap gap-2">
             {product.sizes?.map((size, index) => (
               <div
                 key={index}

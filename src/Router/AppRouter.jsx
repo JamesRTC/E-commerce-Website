@@ -7,7 +7,7 @@ import { Women } from "../Pages/Women";
 import { WomenShoes } from "../Pages/WomenShoes";
 import { MenShoes } from "../Pages/MenShoes";
 import { WomenDresses } from "../Pages/WomenDresses";
-import { MenClothes } from "../Pages/MenClothes";
+import { MenKnitWear } from "../Pages/MenKnitWear";
 import { NewFashion } from "../Pages/NewFashion";
 import { MenSuites } from "../Pages/MenSuites";
 import { ViewCart } from "../Pages/ViewCart";
@@ -27,9 +27,9 @@ export const AppRouter = () => {
           <Route path="men" element={<Men />} />
           <Route path="suits/:men" element={<MenSuites />} />
           <Route path="shoes/:men" element={<MenShoes />} />
+          <Route path="knitwear/:men" element={<MenKnitWear />} />
           <Route path="shoes/:women" element={<WomenShoes />} />
           <Route path="dresses/:women" element={<WomenDresses />} />
-          <Route path="/menfashion/:men" element={<MenClothes />} />
           <Route path="/viewcart" element={<ViewCart />} />
         </Route>
       </Routes>

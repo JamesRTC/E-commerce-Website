@@ -197,6 +197,12 @@ export const ViewProduct = () => {
 
           <div className="mb-5 font-semibold">${item.price}</div>
 
+          {item.colors && (
+            <div className="mb-5 text-xs uppercase text-gray-400">
+              color: <span className="px-1 text-black">As in picture</span>
+            </div>
+          )}
+
           {item.stock && (
             <div className="mb-5 text-xs uppercase text-gray-400">
               stock: <span className="px-1 text-black">{item.stock}</span>

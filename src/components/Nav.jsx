@@ -40,9 +40,11 @@ export const Nav = () => {
 
       <nav>
         <ul className="flex items-end gap-5 tracking-tighter">
-          <li className="cursor-pointer text-4xl font-semibold uppercase">
-            JAMES & CO.
-          </li>
+          <Link to="/">
+            <li className="cursor-pointer text-4xl font-semibold uppercase">
+              JAMES & CO.
+            </li>
+          </Link>
           <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
             NEW
           </li>
