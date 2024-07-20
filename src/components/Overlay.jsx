@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Overlay = ({ children, onClose, product }) => {
   const navigate = useNavigate();
-  console.log(product);
+
   const overlayRef = useRef(null);
 
   const handleClickOutside = (e) => {

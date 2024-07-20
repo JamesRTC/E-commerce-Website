@@ -1,3 +1,4 @@
+import { HeroImages } from "../components/HeroImages";
 import { HeroSlider } from "../components/HeroSlider";
 import { NewArrivals } from "../components/NewArrivals";
 
@@ -6,6 +7,7 @@ export const Hero = () => {
     <>
       <HeroSlider />
       <NewArrivals />
+      <HeroImages />
     </>
   );
 };
