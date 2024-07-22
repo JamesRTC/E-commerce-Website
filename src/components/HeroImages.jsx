@@ -6,13 +6,15 @@ export const HeroImages = () => {
     {
       image: menfashion,
       text: "men's fashion",
-      path: "/fashion/men",
+      subtext: "new collection",
+      path: "/men's fashion/men",
       subImage: men,
     },
     {
       image: womenfashion,
       text: "women's fashion",
-      path: "/womenfashion/women",
+      subtext: "new collection",
+      path: "/women's fashion/women",
       subImage: women,
     },
   ];
@@ -28,7 +30,10 @@ export const HeroImages = () => {
           <div className="relative">
             <img src={image.image} alt={image.text} />
             <div className="absolute bottom-[60px] left-10">
-              <p className="pb-4 text-4xl font-bold uppercase">{image.text}</p>
+              <p className="pb-3 text-lg font-bold uppercase">
+                {image.subtext}
+              </p>
+              <p className="pb-3 text-4xl font-bold uppercase">{image.text}</p>
               <button
                 onClick={() => handleButtonClick(index)}
                 className="relative z-10 border border-black px-5 py-2 font-bold uppercase transition-all duration-300 hover:border-gray-500 hover:text-gray-500"

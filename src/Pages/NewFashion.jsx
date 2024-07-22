@@ -1,9 +1,17 @@
 // import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { products } from "../API/productsAPI";
 import { ProductCard } from "../components/ProductCard";
 
 export const NewFashion = () => {
   const category = "newArrivals";
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <section className="px-10">
       {/* <div className="pt-5 text-xs uppercase">

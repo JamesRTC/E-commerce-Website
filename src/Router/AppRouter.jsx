@@ -29,9 +29,9 @@ export const AppRouter = () => {
           <Route path="men" element={<Men />} />
           <Route path="suits/:men" element={<MenSuites />} />
           <Route path="shoes/:men" element={<MenShoes />} />
-          <Route path="womenfashion/:women" element={<WomenFashion />} />
+          <Route path="women's fashion/:women" element={<WomenFashion />} />
           <Route path="knitwear/:men" element={<MenKnitWear />} />
-          <Route path="fashion/:men" element={<MenFashion />} />
+          <Route path="men's fashion/:men" element={<MenFashion />} />
           <Route path="shoes/:women" element={<WomenShoes />} />
           <Route path="dresses/:women" element={<WomenDresses />} />
           <Route path="/viewcart" element={<ViewCart />} />
