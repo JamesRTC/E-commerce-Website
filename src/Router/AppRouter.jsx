@@ -14,6 +14,7 @@ import { ViewCart } from "../Pages/ViewCart";
 import { MenFashion } from "../Pages/MenFashion";
 import { WomenFashion } from "../Pages/WomenFashion";
 import { Handbags } from "../Pages/Handbags";
+import { New } from "../Pages/New";
 
 export const AppRouter = () => {
   return (
@@ -25,6 +26,7 @@ export const AppRouter = () => {
             path="viewProduct/:category/:name/:id"
             element={<ViewProduct />}
           />
+          <Route path="new" element={<New />} />
           <Route path="newArrivals" element={<NewFashion />} />
           <Route path="women" element={<Women />} />
           <Route path="men" element={<Men />} />

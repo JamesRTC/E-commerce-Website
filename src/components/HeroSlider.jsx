@@ -1,15 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { HeroDresses, HeroSuite, HeroKnits } from "../assets/hero-slider";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 
-export const HeroSlider = () => {
-  const HeroData = [
-    { image: HeroDresses, text: "women's dresses", path: "/dresses/women" },
-    { image: HeroKnits, text: "men's knitwear", path: "/knitwear/men" },
-    { image: HeroSuite, text: "men's suits", path: "/suits/men" },
-  ];
-
+export const HeroSlider = ({ HeroData }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
 
@@ -23,7 +16,7 @@ export const HeroSlider = () => {
 
   const setNewInterval = () => {
     intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % HeroData.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % HeroData?.length);
     }, 5000);
   };
 
@@ -52,26 +45,28 @@ export const HeroSlider = () => {
 
   return (
     <section className="relative">
-      <Link to={HeroData[currentIndex].path}>
-        <div>
-          <img
-            src={HeroData[currentIndex].image}
-            alt="hero image slider"
-            className="sliderAnimation"
-          />
-          <div className="absolute bottom-[60px] left-10">
-            <p className="pb-4 text-4xl font-bold uppercase">
-              {HeroData[currentIndex].text}
-            </p>
-            <button
-              onClick={handleButtonClick}
-              className="relative z-10 border border-black px-5 py-2 font-bold uppercase transition-all duration-300 hover:border-gray-500 hover:text-gray-500"
-            >
-              Shop now
-            </button>
+      {HeroData && (
+        <Link to={HeroData[currentIndex]?.path}>
+          <div>
+            <img
+              src={HeroData[currentIndex]?.image}
+              alt="hero image slider"
+              className="sliderAnimation"
+            />
+            <div className="absolute bottom-[60px] left-10">
+              <p className="pb-4 text-4xl font-bold uppercase">
+                {HeroData[currentIndex].text}
+              </p>
+              <button
+                onClick={handleButtonClick}
+                className="relative z-10 border border-black px-5 py-2 font-bold uppercase transition-all duration-300 hover:border-gray-500 hover:text-gray-500"
+              >
+                Shop now
+              </button>
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      )}
       <span
         className="absolute left-5 top-1/2 z-20 -translate-y-1/2 transform cursor-pointer"
         onClick={handlePrevClick}

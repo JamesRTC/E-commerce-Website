@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
 import { products } from "../API/productsAPI";
 import { ProductCard } from "../components/ProductCard";
+import { useEffect } from "react";
 
 export const MenKnitWear = () => {
   const category = "men";
   const type = "knitwear";
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <section className="px-10">
       <div className="pt-5 text-xs uppercase">

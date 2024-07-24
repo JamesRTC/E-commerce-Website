@@ -45,18 +45,21 @@ export const Nav = () => {
               JAMES & CO.
             </li>
           </Link>
-          <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
-            NEW
-          </li>
-          <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
-            MEN
-          </li>
-          <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
-            WOMEN
-          </li>
-          <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
-            EYEWEAR
-          </li>
+          <Link to="/new">
+            <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
+              NEW
+            </li>
+          </Link>
+          <Link to="/men">
+            <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
+              MEN
+            </li>
+          </Link>
+          <Link to="/women">
+            <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
+              WOMEN
+            </li>
+          </Link>
           <li className="cursor-pointer text-2xl font-semibold uppercase transition-all duration-300 hover:text-slate-500">
             GIFTS
           </li>
