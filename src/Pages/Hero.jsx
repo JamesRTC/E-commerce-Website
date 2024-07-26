@@ -5,15 +5,27 @@ import { HeroDresses, HeroSuite, HeroKnits } from "../assets/hero-slider";
 
 export const Hero = () => {
   const HeroData = [
-    { image: HeroDresses, text: "women's dresses", path: "/dresses/women" },
-    { image: HeroKnits, text: "men's knitwear", path: "/knitwear/men" },
-    { image: HeroSuite, text: "men's suits", path: "/suits/men" },
+    {
+      image: HeroDresses,
+      text: "women's dresses",
+      path: "/dresses/women",
+    },
+    {
+      image: HeroKnits,
+      text: "men's knitwear",
+      path: "/knitwear/men",
+    },
+    {
+      image: HeroSuite,
+      text: "men's suits",
+      path: "/suits/men",
+    },
   ];
   return (
-    <>
+    <section>
       <HeroSlider HeroData={HeroData} />
       <NewArrivals />
       <HeroImages />
-    </>
+    </section>
   );
 };

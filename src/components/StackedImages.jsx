@@ -13,7 +13,7 @@ export const StackedImages = ({ heroImages }) => {
             <img
               src={image.image}
               alt={image.text}
-              className="h-[600px] w-full object-cover object-center"
+              className="h-[600px] w-full object-cover object-center max-sm:w-full max-sm:bg-cover max-sm:bg-center"
             />
             <div className="absolute bottom-[60px] left-10">
               <p className="pb-3 text-lg font-bold uppercase">
