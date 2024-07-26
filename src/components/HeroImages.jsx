@@ -1,5 +1,6 @@
 import { men, women, womenfashion, menfashion } from "../assets/Hero Images";
-import { SlidingImages } from "./StackedImages";
+import { StackedImages } from "./StackedImages";
+
 export const HeroImages = () => {
   const heroImages = [
     {
@@ -20,7 +21,7 @@ export const HeroImages = () => {
 
   return (
     <section>
-      <SlidingImages heroImages={heroImages} />
+      <StackedImages heroImages={heroImages} />
     </section>
   );
 };

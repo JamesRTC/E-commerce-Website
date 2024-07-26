@@ -219,7 +219,7 @@ export const ViewProduct = () => {
               Please select a size
             </div>
           )}
-          <div className="mb-5 flex gap-2">
+          <div className="mb-5 flex flex-wrap gap-2">
             {item.sizes?.map((size, index) => (
               <div
                 key={index}

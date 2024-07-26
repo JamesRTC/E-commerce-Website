@@ -4,7 +4,7 @@ import { ProductCard } from "../components/ProductCard";
 import { useEffect } from "react";
 export const MenShoes = () => {
   const category = "men";
-  const type = "shoes";
+  const type = "men's shoes";
   useEffect(() => {
     window.scrollTo({
       top: 0,

@@ -1,5 +1,6 @@
 import { newHandbags } from "../assets/Hero Images";
-import { newWomen, newMen, HeroDresses, shoe } from "../assets/hero-slider";
+import { newWomen, newMen, HeroDresses } from "../assets/hero-slider";
+import { NikeAirForce1Shadow } from "../assets/women's shoes";
 import { HeroSlider } from "../components/HeroSlider";
 import { StackedImages } from "../components/StackedImages";
 
@@ -27,10 +28,10 @@ export const New = () => {
       path: "/handbags/women",
     },
     {
-      image: shoe,
+      image: NikeAirForce1Shadow,
       text: "women's shoes",
       subtext: "",
-      path: "/shoes/women",
+      path: "/women's shoes/women",
     },
   ];
 
