@@ -26,7 +26,7 @@ export const Men = () => {
       image: shoe,
       text: "men's shoes",
       subtext: "",
-      path: "/shoes/men",
+      path: "/men's shoes/men",
     },
   ];
 

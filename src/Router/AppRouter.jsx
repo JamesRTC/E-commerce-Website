@@ -31,7 +31,7 @@ export const AppRouter = () => {
           <Route path="women" element={<Women />} />
           <Route path="men" element={<Men />} />
           <Route path="suits/:men" element={<MenSuites />} />
-          <Route path="shoes/:men" element={<MenShoes />} />
+          <Route path="men's shoes/:men" element={<MenShoes />} />
           <Route path="women's fashion/:women" element={<WomenFashion />} />
           <Route path="knitwear/:men" element={<MenKnitWear />} />
           <Route path="men's fashion/:men" element={<MenFashion />} />
