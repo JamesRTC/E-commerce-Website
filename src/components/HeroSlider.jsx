@@ -44,7 +44,7 @@ export const HeroSlider = ({ HeroData }) => {
   };
 
   return (
-    <section className="relative">
+    <section className="relative max-sm:mt-[80px] sm:mt-[180px]">
       {HeroData && (
         <Link to={HeroData[currentIndex]?.path}>
           <div>
@@ -54,8 +54,8 @@ export const HeroSlider = ({ HeroData }) => {
               className="sliderAnimation object-cover object-center max-sm:h-[600px]"
             />
 
-            <div className="absolute bottom-[60px] left-10">
-              <p className="pb-4 text-4xl font-bold uppercase">
+            <div className="absolute bottom-[60px] left-10 max-sm:left-5">
+              <p className="pb-4 text-4xl font-bold uppercase max-sm:text-2xl">
                 {HeroData[currentIndex].text}
               </p>
               <button

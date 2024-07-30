@@ -42,15 +42,15 @@ export const NewArrivals = () => {
   };
 
   return (
-    <section className="p-10">
-      <h1 className="text-2xl font-bold uppercase">New Arrivals</h1>
+    <section className="p-10 max-sm:p-5">
+      <h1 className="text-2xl font-bold uppercase max-sm:text-lg">
+        New Arrivals
+      </h1>
       <Link
         to="/newArrivals"
-        className="text-md mb-2 font-semibold uppercase hover:underline hover:underline-offset-4"
+        className="text-md font-bold uppercase hover:underline hover:underline-offset-4 max-sm:text-sm"
       >
-        {/* <h2 className=""> */}
-        Shop all
-        {/* </h2> */}
+        <h2 className="mb-5">Shop all</h2>
       </Link>
       <div className="relative mt-2">
         <div
@@ -69,18 +69,18 @@ export const NewArrivals = () => {
         </div>
         {showLeftArrow && (
           <button
-            className="absolute -left-5 top-1/2 -translate-y-1/2 rounded-full bg-gray-200 p-2 hover:bg-gray-300"
+            className="absolute top-1/2 -translate-y-1/2 rounded-full bg-gray-200 p-2 hover:bg-gray-300 max-sm:-top-5 max-sm:right-10 sm:-left-5"
             onClick={scrollLeft}
           >
-            <FaChevronLeft className="text-xl text-gray-600" />
+            <FaChevronLeft className="text-xl text-gray-600 max-sm:text-xs" />
           </button>
         )}
         {showRightArrow && (
           <button
-            className="absolute -right-5 top-1/2 -translate-y-1/2 rounded-full bg-gray-200 p-2 hover:bg-gray-300"
+            className="absolute -right-5 top-1/2 -translate-y-1/2 rounded-full bg-gray-200 p-2 hover:bg-gray-300 max-sm:-right-0 max-sm:-top-5"
             onClick={scrollRight}
           >
-            <FaChevronRight className="text-xl text-gray-600" />
+            <FaChevronRight className="text-xl text-gray-600 max-sm:text-xs" />
           </button>
         )}
       </div>
