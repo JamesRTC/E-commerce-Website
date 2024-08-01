@@ -44,7 +44,7 @@ export const HeroSlider = ({ HeroData }) => {
   };
 
   return (
-    <section className="relative max-sm:mt-[80px] sm:mt-[180px]">
+    <section className="relative max-sm:mt-[80px] sm:mt-[145px]">
       {HeroData && (
         <Link to={HeroData[currentIndex]?.path}>
           <div>

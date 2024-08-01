@@ -31,7 +31,7 @@ export const Men = () => {
   ];
 
   return (
-    <section className="sm:mt-[145px]">
+    <section className="max-sm:mt-[80px] sm:mt-[145px]">
       <StackedImages heroImages={heroImages} />
     </section>
   );
