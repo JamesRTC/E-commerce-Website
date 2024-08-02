@@ -51,7 +51,7 @@ export const HeroSlider = ({ HeroData }) => {
             <img
               src={HeroData[currentIndex]?.image}
               alt="hero image slider"
-              className="sliderAnimation object-cover object-center max-sm:h-[600px]"
+              className="sliderAnimation object-cover object-center max-sm:h-[500px]"
             />
 
             <div className="absolute bottom-[60px] left-10 max-sm:left-5">
