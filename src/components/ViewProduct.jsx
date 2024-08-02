@@ -109,20 +109,20 @@ export const ViewProduct = () => {
   };
 
   return (
-    <section className="px-10 max-sm:mt-[90px] max-sm:px-5 sm:mt-[145px]">
-      <div className="py-5 text-xs">
+    <section className="max-sm:mt-[90px] sm:mt-[145px]">
+      <div className="flex flex-wrap px-10 py-5 text-xs max-lg:px-5 max-sm:max-w-full max-sm:px-5">
         <Link to={`/${item.category}`}>
-          <span className="px-1 uppercase text-gray-400">{item.category}</span>{" "}
+          <span className="pr-1 uppercase text-gray-400">{item.category}</span>{" "}
           /
         </Link>
         <Link to={`/${item.type}/${item.category}`}>
           <span className="px-1 uppercase text-gray-400">{item.type}</span> /
         </Link>
-        <span className="px-1 uppercase">{name}</span>
+        <span className="pr-1 uppercase">{name}</span>
       </div>
-      <div className="flex gap-10">
-        <div className="flex w-3/5 items-start gap-5">
-          <div>
+      <div className="gap-2 px-10 max-lg:gap-0 max-lg:px-5 max-sm:px-0 md:flex">
+        <div className="flex w-3/5 items-start gap-5 max-xl:w-full max-xl:flex-col-reverse max-sm:w-full max-sm:flex-col-reverse">
+          <div className="flex-wrap max-xl:flex max-xl:w-full max-xl:gap-3 max-sm:flex max-sm:w-full max-sm:flex-wrap max-sm:gap-3 max-sm:px-5">
             {media.map((mediaItem, index) => (
               <div
                 key={index}
@@ -151,7 +151,7 @@ export const ViewProduct = () => {
           </div>
 
           <div
-            className="relative h-full w-full"
+            className="relative h-full w-full max-sm:min-w-[335px]"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -192,7 +192,7 @@ export const ViewProduct = () => {
             )}
           </div>
         </div>
-        <div className="w-2/5">
+        <div className="w-2/5 px-10 max-xl:w-full max-sm:mt-5 max-sm:w-full max-sm:px-5">
           <div className="mb-1 font-bold">{item.name}</div>
 
           <div className="mb-5 font-semibold">${item.price}</div>

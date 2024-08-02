@@ -29,8 +29,8 @@ export const ViewCart = () => {
   };
 
   return (
-    <section className="flex justify-center gap-10">
-      <div className="mt-5 max-w-[800px] border px-10 pt-5">
+    <section className="gap-10 overflow-scroll px-10 max-sm:mt-[90px] max-sm:px-5 max-sm:text-sm sm:mt-[145px] lg:flex lg:justify-center">
+      <div className="mt-5 w-full border px-5 pt-5 max-sm:mb-[300px] md:max-w-[800px]">
         {cart.map((item) => {
           const product = products[item.category].find(
             (product) => item.productId === product.id,
@@ -38,8 +38,8 @@ export const ViewCart = () => {
 
           return (
             <div key={`${item.productId}-${item.size}`}>
-              <div className="mb-5 grid grid-cols-[300px,1fr] gap-10 border-b-[1px] pb-5 text-sm">
-                <div className="grid grid-cols-[100px,1fr] gap-3">
+              <div className="mb-5 gap-10 border-b-[1px] pb-5 text-sm md:grid md:grid-cols-[300px,1fr]">
+                <div className="max-sm-w-full mb-5 grid grid-cols-[100px,1fr] gap-3">
                   <div className="">
                     {product && (
                       <img
@@ -74,7 +74,7 @@ export const ViewCart = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-10">
+                <div className="flex justify-between gap-10 max-sm:w-full">
                   <div className="flex flex-col items-center gap-3">
                     <div className="uppercase">Each</div>
                     <div>${item.unitPrice}</div>
@@ -138,13 +138,13 @@ export const ViewCart = () => {
         })}
       </div>
 
-      <div className="mt-5 h-[300px] w-[400px] border px-10 py-5">
+      <div className="bottom-0 left-0 right-0 z-10 mt-5 w-full border px-5 py-5 max-sm:fixed max-sm:w-full max-sm:bg-white md:max-h-[300px] md:max-w-[400px]">
         <div className="mb-5 text-lg font-bold uppercase">order summary</div>
         <div className="flex justify-between">
           <div className="text-md uppercase">estimated total</div>
           <div>${totalAmount}</div>
         </div>
-        <button className="my-10 w-full bg-black py-3 font-bold uppercase text-white transition-all duration-300 hover:bg-black/50">
+        <button className="my-10 w-full bg-black py-3 font-bold uppercase text-white transition-all duration-300 hover:bg-black/50 max-sm:my-5">
           checkout
         </button>
         <button className="flex w-full items-center justify-center border-[1px] border-black bg-white py-3 font-bold uppercase text-white transition-all duration-300 hover:border-black/50">
