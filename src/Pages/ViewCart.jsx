@@ -62,16 +62,17 @@ export const ViewCart = () => {
                     >
                       Edit
                     </div>
-
-                    {modalIsOpen === item && product && (
-                      <Overlay onClose={handleClose} product={product}>
-                        <Modal
-                          item={item}
-                          product={product}
-                          onClose={handleClose}
-                        />
-                      </Overlay>
-                    )}
+                    <div className="">
+                      {modalIsOpen === item && product && (
+                        <Overlay onClose={handleClose} product={product}>
+                          <Modal
+                            item={item}
+                            product={product}
+                            onClose={handleClose}
+                          />
+                        </Overlay>
+                      )}
+                    </div>
                   </div>
                 </div>
 

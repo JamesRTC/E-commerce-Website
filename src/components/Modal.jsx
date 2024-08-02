@@ -13,6 +13,8 @@ export const Modal = ({ item, product, onClose }) => {
   const [videoPlaybackTime, setVideoPlaybackTime] = useState(0);
   const videoRef = useRef(null);
   const dispatch = useDispatch();
+  const buttonRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(true);
 
   useEffect(() => {
     if (product) {
@@ -36,10 +38,24 @@ export const Modal = ({ item, product, onClose }) => {
     }
   }, [currentMediaIndex, media, videoPlaybackTime]);
 
-  // useEffect(() => {
-  //   setQuantity(item.quantity);
-  //   setItemSize(item.size);
-  // }, [item.quantity, item.size]);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSticky(entry.isIntersecting);
+      },
+      { threshold: 1.0 },
+    );
+
+    if (buttonRef.current) {
+      observer.observe(buttonRef.current);
+    }
+
+    return () => {
+      if (buttonRef.current) {
+        observer.unobserve(buttonRef.current);
+      }
+    };
+  }, []);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -82,7 +98,6 @@ export const Modal = ({ item, product, onClose }) => {
       unitPrice: product.price,
       totalPrice: product.price * quantity,
     };
-    // Check if the item already exists in the cart
 
     dispatch(editItem(editedItem));
     setShowSizeError(false);
@@ -107,11 +122,11 @@ export const Modal = ({ item, product, onClose }) => {
   }
 
   return (
-    <section className="max-h-[800px] max-w-[800px] overflow-y-scroll px-5 py-5">
+    <section className="max-w-[800px] py-5">
       <div className="flex gap-10 max-sm:grid max-sm:gap-5">
-        <div className="flex w-2/4 items-start gap-5 max-sm:w-full">
+        <div className="relative flex w-2/4 items-start gap-5 max-sm:w-full">
           <div
-            className="h-full w-full max-sm:relative max-sm:h-[500px] max-sm:w-full"
+            className="h-full w-full max-sm:relative max-sm:h-0 max-sm:w-full max-sm:pb-[110%]"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -119,7 +134,7 @@ export const Modal = ({ item, product, onClose }) => {
               <img
                 src={currentMedia.src}
                 alt="current product media"
-                className="object-fit h-full w-full object-cover max-sm:absolute max-sm:inset-0"
+                className="h-full w-full object-cover max-sm:absolute max-sm:inset-0"
               />
             ) : (
               <video
@@ -154,15 +169,12 @@ export const Modal = ({ item, product, onClose }) => {
         </div>
         <div className="w-2/4 max-sm:w-full">
           <div className="mb-1 font-bold">{product.name}</div>
-
           <div className="mb-5 font-semibold">${product.price}</div>
-
           {product.stock && (
             <div className="mb-5 text-xs uppercase text-gray-400">
               stock: <span className="px-1 text-black">{product.stock}</span>
             </div>
           )}
-
           {product.sizes.length > 0 && (
             <div className="mb-1 text-xs uppercase text-gray-400">
               size: <span className="px-1 text-black">{itemSize}</span>
@@ -186,12 +198,10 @@ export const Modal = ({ item, product, onClose }) => {
               </div>
             ))}
           </div>
-
           <div className="mb-5">
             <span className="pr-1 text-xs uppercase text-gray-400">Color:</span>
             <span className="text-xs uppercase">As in picture</span>
           </div>
-
           <div className="mb-1 text-xs uppercase">Quantity</div>
           <div className="mb-5 w-[100px]">
             <select
@@ -213,17 +223,21 @@ export const Modal = ({ item, product, onClose }) => {
               <option value="10">10</option>
             </select>
           </div>
-
-          <button
-            onClick={handleEditCart}
-            className={`mb-10 w-full ${
-              product.sizes.length > 0 && !itemSize
-                ? "bg-stone-300 text-black/30"
-                : "cursor-pointer bg-black text-white"
-            } py-3 font-bold uppercase transition-all duration-300 hover:bg-black/50`}
+          <div
+            className={`w-full transition-all duration-300 ${isSticky ? "sticky -bottom-[20px]" : ""}`}
+            ref={buttonRef}
           >
-            update bag
-          </button>
+            <button
+              onClick={handleEditCart}
+              className={`w-full ${
+                product.sizes.length > 0 && !itemSize
+                  ? "bg-stone-300 text-black/30"
+                  : "cursor-pointer bg-black text-white"
+              } py-3 font-bold uppercase transition-all duration-300 hover:bg-black/50`}
+            >
+              update bag
+            </button>
+          </div>
         </div>
       </div>
     </section>
