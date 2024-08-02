@@ -109,7 +109,7 @@ export const ViewProduct = () => {
   };
 
   return (
-    <section className="px-10">
+    <section className="px-10 max-sm:mt-[90px] max-sm:px-5 sm:mt-[145px]">
       <div className="py-5 text-xs">
         <Link to={`/${item.category}`}>
           <span className="px-1 uppercase text-gray-400">{item.category}</span>{" "}

@@ -15,7 +15,7 @@ export const WomenShoes = () => {
   }, []);
 
   return (
-    <section className="px-10">
+    <section className="px-10 max-sm:mt-[90px] max-sm:px-5 sm:mt-[145px]">
       <div>
         <div className="pt-5 text-xs uppercase">
           <Link to={`/${category}`}>
@@ -24,7 +24,7 @@ export const WomenShoes = () => {
           <span className="pl-2">{type}</span>
         </div>
         <h1 className="py-5 text-2xl font-semibold uppercase">{type}</h1>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid max-sm:grid-cols-2 max-sm:gap-2 md:grid-cols-3 md:gap-3 lg:gap-5">
           {products[category]
             .filter((item) => item.type === type)
             .map((product) => (

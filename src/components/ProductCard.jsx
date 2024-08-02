@@ -19,7 +19,7 @@ export const ProductCard = ({ category, product }) => {
     setHoveredImageUrl(null);
   };
   return (
-    <div className="min-w-[360px] max-sm:min-w-[160px]">
+    <div className="max-sm:min-w-[160px] md:min-w-[200px]">
       <Link to={`/viewProduct/${category}/${product.name}/${product.id}`}>
         <div
           className="relative pb-[110%]"
@@ -37,7 +37,9 @@ export const ProductCard = ({ category, product }) => {
           />
         </div>
 
-        <div className="mt-2 font-bold max-sm:text-sm">{product.name}</div>
+        <div className="mt-2 flex flex-wrap font-bold max-sm:text-[12px] sm:max-w-[70%] md:max-w-[90%] md:text-[15px]">
+          {product.name}
+        </div>
       </Link>
       <div className="mt-1 font-semibold text-gray-600 max-sm:text-sm">
         ${product.price}

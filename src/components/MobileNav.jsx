@@ -122,7 +122,7 @@ export const MobileNav = ({ mobileNav, setMobileNav }) => {
             <Link to="/handbags/women">
               <li>handbags</li>
             </Link>
-            <Link to="/women-fashion/women">
+            <Link to="/women's fashion/women">
               <li>Women's Fashion</li>
             </Link>
           </ul>
