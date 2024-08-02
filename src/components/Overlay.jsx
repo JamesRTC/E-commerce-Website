@@ -26,7 +26,7 @@ export const Overlay = ({ children, onClose, product }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-      <div ref={overlayRef} className="relative bg-white pb-5">
+      <div ref={overlayRef} className="relative bg-white">
         <div className="flex items-center justify-between p-5">
           <div
             className="font-semibold uppercase tracking-tight underline-offset-2 hover:cursor-pointer hover:underline"

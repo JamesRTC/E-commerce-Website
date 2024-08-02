@@ -19,14 +19,15 @@ import {
 export const ViewCart = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const dispatch = useDispatch();
-  const cart = useSelector(getCart);
-  const totalAmount = useSelector(getTotalCartPrice);
 
-  if (cart.length === 0) return <EmptyCart />;
+  const cart = useSelector(getCart);
+
+  const totalAmount = useSelector(getTotalCartPrice);
 
   const handleClose = () => {
     setModalIsOpen(false);
   };
+  if (cart.length === 0) return <EmptyCart />;
 
   return (
     <section className="gap-10 overflow-scroll px-10 max-sm:mt-[90px] max-sm:px-5 max-sm:text-sm sm:mt-[145px] lg:flex lg:justify-center">

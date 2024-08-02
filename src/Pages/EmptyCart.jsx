@@ -11,6 +11,7 @@ export const EmptyCart = () => {
           <span> back to menu</span>
         </span>
       </Link>
+      <h1 className="upperacase font-semibold">shopping bag</h1>
       <div>Your cart is empty. Do some shopping to populate the cart</div>
     </section>
   );

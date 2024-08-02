@@ -107,11 +107,11 @@ export const Modal = ({ item, product, onClose }) => {
   }
 
   return (
-    <section className="max-w-[800px] px-5">
-      <div className="flex gap-10">
-        <div className="flex w-2/4 items-start gap-5">
+    <section className="max-h-[800px] max-w-[800px] overflow-y-scroll px-5 py-5">
+      <div className="flex gap-10 max-sm:grid max-sm:gap-5">
+        <div className="flex w-2/4 items-start gap-5 max-sm:w-full">
           <div
-            className="relative h-full w-full"
+            className="h-full w-full max-sm:relative max-sm:h-[500px] max-sm:w-full"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -119,7 +119,7 @@ export const Modal = ({ item, product, onClose }) => {
               <img
                 src={currentMedia.src}
                 alt="current product media"
-                className="h-full w-full object-cover"
+                className="object-fit h-full w-full object-cover max-sm:absolute max-sm:inset-0"
               />
             ) : (
               <video
@@ -152,7 +152,7 @@ export const Modal = ({ item, product, onClose }) => {
             )}
           </div>
         </div>
-        <div className="w-2/4">
+        <div className="w-2/4 max-sm:w-full">
           <div className="mb-1 font-bold">{product.name}</div>
 
           <div className="mb-5 font-semibold">${product.price}</div>
