@@ -12,7 +12,7 @@ export const MenSuites = () => {
     });
   }, []);
   return (
-    <section className="mt-10 px-10 max-sm:mt-[90px] sm:mt-[145px]">
+    <section className="mt-10 px-10 max-sm:mt-[90px] max-sm:px-5 sm:mt-[145px]">
       <div className="pt-5 text-xs uppercase">
         <Link to={`/${category}`}>
           <span className="pr-2 text-gray-400">{`${category}`}</span>/
