@@ -22,7 +22,7 @@ export const Hero = () => {
     },
   ];
   return (
-    <section>
+    <section className="">
       <HeroSlider HeroData={HeroData} />
       <NewArrivals />
       <HeroImages />

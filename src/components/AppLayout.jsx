@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { Nav } from "./Nav";
-import { useState } from "react";
 
+import { Footer } from "./Footer";
+import { useState } from "react";
 export const AppLayout = () => {
   const [mobileNav, setMobileNav] = useState(false);
 
@@ -10,13 +11,14 @@ export const AppLayout = () => {
   }
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Nav
         toggleMobileNav={toggleMobileNav}
         mobileNav={mobileNav}
         setMobileNav={setMobileNav}
       />
-      {!mobileNav && <Outlet />}
-    </>
+      <section className="min-h-screen">{!mobileNav && <Outlet />}</section>
+      <Footer />
+    </div>
   );
 };

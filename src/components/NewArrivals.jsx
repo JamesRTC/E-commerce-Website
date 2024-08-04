@@ -59,7 +59,7 @@ export const NewArrivals = () => {
           className="no-scrollbar grid grid-flow-col gap-5 overflow-x-scroll"
           style={{ scrollBehavior: "smooth" }}
         >
-          {products[category].slice(0, 8).map((product) => (
+          {products[category].slice(0, 15).map((product) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -69,7 +69,7 @@ export const NewArrivals = () => {
         </div>
         {showLeftArrow && (
           <button
-            className="absolute top-1/2 -translate-y-1/2 rounded-full bg-gray-200 p-2 hover:bg-gray-300 max-sm:-top-5 max-sm:right-10 sm:-left-5"
+            className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
             onClick={scrollLeft}
           >
             <FaChevronLeft className="text-xl text-gray-600 max-sm:text-xs" />
@@ -77,7 +77,7 @@ export const NewArrivals = () => {
         )}
         {showRightArrow && (
           <button
-            className="absolute -right-5 top-1/2 -translate-y-1/2 rounded-full bg-gray-200 p-2 hover:bg-gray-300 max-sm:-right-0 max-sm:-top-5"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
             onClick={scrollRight}
           >
             <FaChevronRight className="text-xl text-gray-600 max-sm:text-xs" />

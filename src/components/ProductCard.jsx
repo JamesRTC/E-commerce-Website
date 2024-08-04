@@ -19,7 +19,7 @@ export const ProductCard = ({ category, product }) => {
     setHoveredImageUrl(null);
   };
   return (
-    <div className="max-sm:min-w-[160px] md:min-w-[200px]">
+    <div className="max-sm:min-w-[160px] md:min-w-[400px]">
       <Link to={`/viewProduct/${category}/${product.name}/${product.id}`}>
         <div
           className="relative pb-[110%]"

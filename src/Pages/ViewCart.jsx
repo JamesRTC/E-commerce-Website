@@ -30,7 +30,7 @@ export const ViewCart = () => {
   if (cart.length === 0) return <EmptyCart />;
 
   return (
-    <section className="gap-10 overflow-scroll px-10 max-sm:mt-[90px] max-sm:px-5 max-sm:text-sm sm:mt-[145px] lg:flex lg:justify-center">
+    <section className="gap-10 overflow-y-auto px-10 max-sm:mt-[90px] max-sm:px-5 max-sm:text-sm sm:mt-[145px] lg:flex lg:justify-center">
       <div className="mt-5 w-full border px-5 pt-5 max-sm:mb-[300px] md:max-w-[800px]">
         {cart.map((item) => {
           const product = products[item.category].find(
