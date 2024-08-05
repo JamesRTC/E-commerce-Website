@@ -43,6 +43,13 @@ export const ViewProduct = () => {
     }
   }, [currentMediaIndex, media, videoPlaybackTime]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   const handlePrevious = () => {
     if (media[currentMediaIndex].type === "video" && videoRef.current) {
       setVideoPlaybackTime(videoRef.current.currentTime);

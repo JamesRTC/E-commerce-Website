@@ -2,8 +2,15 @@ import { HeroImages } from "../components/HeroImages";
 import { HeroSlider } from "../components/HeroSlider";
 import { NewArrivals } from "../components/NewArrivals";
 import { HeroDresses, HeroSuite, HeroKnits } from "../assets/hero-slider";
+import { useEffect } from "react";
 
 export const Hero = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const HeroData = [
     {
       image: HeroDresses,

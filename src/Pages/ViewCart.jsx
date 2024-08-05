@@ -13,6 +13,7 @@ import {
   deleteItem,
   getCart,
   getTotalCartPrice,
+  getTotalCartQuantity,
   increaseItemQuantity,
 } from "../Redux/cartSlice";
 
@@ -21,13 +22,14 @@ export const ViewCart = () => {
   const dispatch = useDispatch();
 
   const cart = useSelector(getCart);
-
+  const totalCartQuantity = useSelector(getTotalCartQuantity);
+  console.log(totalCartQuantity);
   const totalAmount = useSelector(getTotalCartPrice);
 
   const handleClose = () => {
     setModalIsOpen(false);
   };
-  if (cart.length === 0) return <EmptyCart />;
+  if (totalCartQuantity === 0) return <EmptyCart />;
 
   return (
     <section className="gap-10 overflow-y-auto px-10 max-sm:mt-[90px] max-sm:px-5 max-sm:text-sm sm:mt-[145px] lg:flex lg:justify-center">

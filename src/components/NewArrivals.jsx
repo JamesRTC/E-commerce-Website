@@ -56,7 +56,7 @@ export const NewArrivals = () => {
         <div
           ref={containerRef}
           onScroll={updateArrowsVisibility}
-          className="no-scrollbar grid grid-flow-col gap-5 overflow-x-scroll"
+          className="no-scrollbar grid grid-flow-col gap-5 overflow-x-scroll max-sm:gap-2"
           style={{ scrollBehavior: "smooth" }}
         >
           {products[category].slice(0, 15).map((product) => (
@@ -69,7 +69,7 @@ export const NewArrivals = () => {
         </div>
         {showLeftArrow && (
           <button
-            className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
+            className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300 max-sm:-top-5 max-sm:left-[85%] sm:left-0"
             onClick={scrollLeft}
           >
             <FaChevronLeft className="text-xl text-gray-600 max-sm:text-xs" />
@@ -77,7 +77,7 @@ export const NewArrivals = () => {
         )}
         {showRightArrow && (
           <button
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300"
+            className="absolute top-1/2 -translate-y-1/2 translate-x-1/2 transform rounded-full bg-gray-200 p-2 hover:bg-gray-300 max-sm:-top-5 max-sm:right-5 sm:right-0"
             onClick={scrollRight}
           >
             <FaChevronRight className="text-xl text-gray-600 max-sm:text-xs" />
