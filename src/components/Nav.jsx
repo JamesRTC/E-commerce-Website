@@ -29,7 +29,9 @@ export const Nav = ({ toggleMobileNav, mobileNav, setMobileNav }) => {
             <ul className="cursor-pointer">
               <GoPerson className="size-5 cursor-pointer transition-all duration-300 hover:text-slate-500" />
             </ul>
-            <Link to="/viewcart">
+            <Link
+              to={`${totalCartQuantity === 0 ? "/viewcart/emptycart" : "/viewcart"}`}
+            >
               <li className="relative cursor-pointer">
                 <HiOutlineShoppingBag className="size-5 cursor-pointer transition-all duration-300 hover:text-slate-500" />
                 {totalCartQuantity > 0 && (

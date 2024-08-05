@@ -15,6 +15,7 @@ import { MenFashion } from "../Pages/MenFashion";
 import { WomenFashion } from "../Pages/WomenFashion";
 import { Handbags } from "../Pages/Handbags";
 import { New } from "../Pages/New";
+import { EmptyCart } from "../Pages/EmptyCart";
 
 export const AppRouter = () => {
   return (
@@ -39,6 +40,7 @@ export const AppRouter = () => {
           <Route path="dresses/:women" element={<WomenDresses />} />
           <Route path="handbags/:women" element={<Handbags />} />
           <Route path="/viewcart" element={<ViewCart />} />
+          <Route path="/viewcart/:emptycart" element={<EmptyCart />} />
         </Route>
       </Routes>
     </BrowserRouter>

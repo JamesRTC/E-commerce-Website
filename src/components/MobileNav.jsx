@@ -88,13 +88,13 @@ export const MobileNav = ({ mobileNav, setMobileNav }) => {
             onClick={closeMobileNav}
           >
             <Link to="/men's shoes/men">
-              <li className="text-sm">Shoes</li>
+              <li className="mb-2 text-sm">Shoes</li>
             </Link>
             <Link to="/suits/men">
-              <li className="text-sm">Suits</li>
+              <li className="mb-2 text-sm">Suits</li>
             </Link>
             <Link to="/knitwear/men">
-              <li className="text-sm">Knitwear</li>
+              <li className="mb-2 text-sm">Knitwear</li>
             </Link>
             <Link to="/men's fashion/men">
               <li className="text-sm">Men's Fashion</li>
@@ -116,17 +116,17 @@ export const MobileNav = ({ mobileNav, setMobileNav }) => {
         </li>
         {menuState.WOMEN && (
           <ul
-            className="ml-5 list-none text-lg uppercase"
+            className="ml-5 list-none space-y-5 text-lg uppercase"
             onClick={closeMobileNav}
           >
             <Link to="/women's shoes/women">
-              <li className="text-sm">Shoes</li>
+              <li className="mb-2 text-sm">Shoes</li>
             </Link>
             <Link to="/dresses/women">
-              <li className="text-sm">Dresses</li>
+              <li className="mb-2 text-sm">Dresses</li>
             </Link>
             <Link to="/handbags/women">
-              <li className="text-sm">handbags</li>
+              <li className="mb-2 text-sm">handbags</li>
             </Link>
             <Link to="/women's fashion/women">
               <li className="text-sm">Women's Fashion</li>

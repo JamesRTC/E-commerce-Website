@@ -17,7 +17,7 @@ export const AppLayout = () => {
         mobileNav={mobileNav}
         setMobileNav={setMobileNav}
       />
-      <section className="mb-10 max-sm:mb-5">
+      <section className="mb-10 min-h-screen max-sm:mb-5">
         {!mobileNav && <Outlet />}
       </section>
       {!mobileNav && <Footer />}
