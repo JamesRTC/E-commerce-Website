@@ -116,7 +116,7 @@ export const ViewProduct = () => {
   };
 
   return (
-    <section className="max-sm:mt-[90px] sm:mt-[145px]">
+    <section className="max-sm:mt-[90px] max-sm:text-sm sm:mt-[145px]">
       <div className="flex flex-wrap px-10 py-5 text-xs max-lg:px-5 max-sm:max-w-full max-sm:px-5">
         <Link to={`/${item.category}`}>
           <span className="pr-1 uppercase text-gray-400">{item.category}</span>{" "}

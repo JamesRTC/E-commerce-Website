@@ -5,7 +5,7 @@ import { LuPlusCircle } from "react-icons/lu";
 import { IoMdClose } from "react-icons/io";
 import { paypalLogo } from "../assets/logos";
 import { EmptyCart } from "./EmptyCart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Overlay } from "../components/Overlay";
 import { Modal } from "../components/Modal";
 import {
@@ -21,9 +21,15 @@ export const ViewCart = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   const cart = useSelector(getCart);
   const totalCartQuantity = useSelector(getTotalCartQuantity);
-  console.log(totalCartQuantity);
   const totalAmount = useSelector(getTotalCartPrice);
 
   const handleClose = () => {

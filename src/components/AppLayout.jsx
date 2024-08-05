@@ -17,8 +17,10 @@ export const AppLayout = () => {
         mobileNav={mobileNav}
         setMobileNav={setMobileNav}
       />
-      <section className="min-h-screen">{!mobileNav && <Outlet />}</section>
-      <Footer />
+      <section className="mb-10 max-sm:mb-5">
+        {!mobileNav && <Outlet />}
+      </section>
+      {!mobileNav && <Footer />}
     </div>
   );
 };
