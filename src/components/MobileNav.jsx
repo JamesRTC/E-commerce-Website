@@ -55,7 +55,7 @@ export const MobileNav = ({ mobileNav, setMobileNav }) => {
               className="flex items-center justify-between text-lg"
             >
               <Link to="/men's fashion/men">
-                <span>MEN'S FASHION</span>
+                <span className="text-sm">MEN'S FASHION</span>
               </Link>
             </li>
 
@@ -64,7 +64,7 @@ export const MobileNav = ({ mobileNav, setMobileNav }) => {
               className="flex items-center justify-between text-lg"
             >
               <Link to="/women's fashion/men">
-                <span>WOMEN'S FASHION</span>
+                <span className="text-sm">WOMEN'S FASHION</span>
               </Link>
             </li>
           </ul>
@@ -88,16 +88,16 @@ export const MobileNav = ({ mobileNav, setMobileNav }) => {
             onClick={closeMobileNav}
           >
             <Link to="/men's shoes/men">
-              <li>Shoes</li>
+              <li className="text-sm">Shoes</li>
             </Link>
             <Link to="/suits/men">
-              <li>Suits</li>
+              <li className="text-sm">Suits</li>
             </Link>
             <Link to="/knitwear/men">
-              <li>Knitwear</li>
+              <li className="text-sm">Knitwear</li>
             </Link>
             <Link to="/men's fashion/men">
-              <li>Men's Fashion</li>
+              <li className="text-sm">Men's Fashion</li>
             </Link>
           </ul>
         )}
@@ -120,16 +120,16 @@ export const MobileNav = ({ mobileNav, setMobileNav }) => {
             onClick={closeMobileNav}
           >
             <Link to="/women's shoes/women">
-              <li>Shoes</li>
+              <li className="text-sm">Shoes</li>
             </Link>
             <Link to="/dresses/women">
-              <li>Dresses</li>
+              <li className="text-sm">Dresses</li>
             </Link>
             <Link to="/handbags/women">
-              <li>handbags</li>
+              <li className="text-sm">handbags</li>
             </Link>
             <Link to="/women's fashion/women">
-              <li>Women's Fashion</li>
+              <li className="text-sm">Women's Fashion</li>
             </Link>
           </ul>
         )}
