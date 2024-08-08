@@ -11,7 +11,7 @@ export const AppLayout = () => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="font-roboto flex min-h-screen flex-col">
       <Nav
         toggleMobileNav={toggleMobileNav}
         mobileNav={mobileNav}
