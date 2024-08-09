@@ -10,7 +10,7 @@ export const Footer = () => {
     <div className="border-t-[1px] bg-white px-10 py-10 text-xs uppercase max-md:px-5 max-md:py-2 max-md:text-[11px]">
       <div className="md:flex md:items-end">
         <Link to="/">
-          <h1 className="mr-2 flex text-nowrap text-2xl font-bold max-md:mb-2 max-md:text-lg md:mr-5">
+          <h1 className="flex-end mr-2 flex text-nowrap text-2xl font-bold max-md:mb-2 max-md:text-lg md:mr-5">
             James & Co.
           </h1>
         </Link>
