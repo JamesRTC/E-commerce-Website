@@ -9,9 +9,12 @@ export const EmptyCart = () => {
           <span> back to menu</span>
         </span>
       </Link>
+
+      <h1 className="upppercase max-sm:md text-xl font-semibold">
+        shopping bag
+      </h1>
       <div className="upppercase max-sm:text-sm">
-        <h1 className="font-semibold">shopping bag</h1>
-        <div className="">Your shopping bag is empty</div>
+        Your shopping bag is empty
       </div>
     </section>
   );
