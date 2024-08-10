@@ -10,7 +10,7 @@ export const EmptyCart = () => {
         </span>
       </Link>
 
-      <h1 className="max-sm:md font-semibold uppercase md:text-xl">
+      <h1 className="font-semibold uppercase max-sm:text-lg md:text-xl">
         shopping bag
       </h1>
       <div className="uppercase">Your shopping bag is empty</div>
